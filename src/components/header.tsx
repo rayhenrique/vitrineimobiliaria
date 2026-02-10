@@ -22,15 +22,15 @@ export function Header() {
           <span>{BROKER_NAME}</span>
         </Link>
         <nav className="hidden items-center gap-8 text-sm text-secondary md:flex">
-          <Link className="flex items-center gap-1.5 hover:text-primary" href="#inicio">
+          <Link className="flex items-center gap-1.5 transition-colors duration-200 hover:text-primary" href="#inicio">
             <House className="h-4 w-4" />
             <span>Início</span>
           </Link>
-          <Link className="flex items-center gap-1.5 hover:text-primary" href="#imoveis">
+          <Link className="flex items-center gap-1.5 transition-colors duration-200 hover:text-primary" href="#imoveis">
             <Landmark className="h-4 w-4" />
             <span>Imóveis</span>
           </Link>
-          <Link className="flex items-center gap-1.5 hover:text-primary" href="#sobre">
+          <Link className="flex items-center gap-1.5 transition-colors duration-200 hover:text-primary" href="#sobre">
             <Info className="h-4 w-4" />
             <span>Sobre</span>
           </Link>

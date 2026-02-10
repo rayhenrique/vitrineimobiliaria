@@ -258,10 +258,10 @@ export default async function HomePage({ searchParams }: HomePageProps) {
           <div className="absolute inset-0 bg-primary/60" />
         </div>
         <div className="relative mx-auto flex min-h-[75vh] max-w-6xl flex-col justify-center gap-8 px-6 py-20 text-white">
-          <Badge variant="accent" className="w-fit text-white">
+          <Badge variant="accent" className="motion-fade-up w-fit text-white">
             Vitrine Imobiliária de Autoridade
           </Badge>
-          <div className="max-w-2xl space-y-4">
+          <div className="motion-fade-up motion-delay-1 max-w-2xl space-y-4">
             <h1 className="text-4xl font-semibold tracking-tight md:text-5xl">
               Imóveis exclusivos em Alagoas para quem busca alto padrão e segurança.
             </h1>
@@ -273,7 +273,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
           <form
             action="/"
             method="get"
-            className="rounded-2xl bg-white/95 p-6 text-primary shadow-soft backdrop-blur"
+            className="motion-fade-up motion-delay-2 rounded-2xl bg-white/95 p-6 text-primary shadow-soft backdrop-blur"
           >
             <p className="text-sm font-semibold text-secondary">
               Encontre o imóvel ideal em segundos
@@ -303,13 +303,13 @@ export default async function HomePage({ searchParams }: HomePageProps) {
                   </option>
                 ))}
               </select>
-              <Button type="submit" className="w-full md:w-auto">
+              <Button type="submit" className="w-full transition-transform hover:-translate-y-0.5 md:w-auto">
                 <Search className="mr-2 h-4 w-4" />
                 <span>Buscar</span>
               </Button>
             </div>
           </form>
-          <div className="flex flex-wrap items-center gap-6 text-sm text-white/80">
+          <div className="motion-fade-up motion-delay-3 flex flex-wrap items-center gap-6 text-sm text-white/80">
             <span>Consultoria exclusiva</span>
             <span>Fotos premium</span>
             <span>Contato direto via WhatsApp</span>
@@ -318,7 +318,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
       </section>
 
       <section id="imoveis" className="mx-auto max-w-6xl px-6 py-20">
-        <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+        <div className="motion-fade-up flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
           <div>
             <p className="text-sm font-semibold text-accent">Destaques</p>
             <h2 className="text-3xl font-semibold tracking-tight">
@@ -332,7 +332,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
             </a>
           </Button>
         </div>
-        <div className="mt-10 grid gap-6 lg:grid-cols-3">
+        <div className="stagger-grid mt-10 grid gap-6 lg:grid-cols-3">
           {featured.map((property) => (
             <Link
               key={property.id}
@@ -346,7 +346,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
       </section>
 
       <section id="sobre" className="section-muted">
-        <div className="mx-auto grid max-w-6xl gap-10 px-6 py-20 md:grid-cols-3">
+        <div className="stagger-grid mx-auto grid max-w-6xl gap-10 px-6 py-20 md:grid-cols-3">
           {[
             {
               title: "Curadoria especializada",
@@ -381,7 +381,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
       </section>
 
       <section className="mx-auto max-w-6xl px-6 py-20">
-        <div className="flex items-center justify-between">
+        <div className="motion-fade-up flex items-center justify-between">
           <div>
             <p className="text-sm font-semibold text-accent">Prova social</p>
             <h2 className="text-3xl font-semibold tracking-tight">
@@ -390,7 +390,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
           </div>
           <Badge variant="default">100% satisfação</Badge>
         </div>
-        <div className="mt-10 grid gap-6 md:grid-cols-2">
+        <div className="stagger-grid mt-10 grid gap-6 md:grid-cols-2">
           {sold.map((property) => (
             <Link
               key={property.id}

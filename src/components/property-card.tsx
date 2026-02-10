@@ -34,13 +34,13 @@ export function PropertyCard({
     status === "sold" ? "Vendido" : status === "reserved" ? "Reservado" : "Destaque";
 
   return (
-    <Card className="overflow-hidden">
+    <Card className="group overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-soft">
       <div className="relative h-52 w-full">
         <Image
           src={image}
           alt={title}
           fill
-          className="object-cover"
+          className="object-cover transition-transform duration-500 group-hover:scale-105"
           sizes="(max-width: 768px) 100vw, 33vw"
         />
         <Badge

@@ -95,22 +95,20 @@ npm install
 npm run build
 ```
 
-## 7) Configurar comando de start no CloudPanel
+## 7) Configurar start no CloudPanel
 
-No app Node.js do CloudPanel, configure:
+Em algumas instalacoes do CloudPanel nao existe campo de `Build Command`/`Start Command` para site Node.
 
-- Build Command: `npm run build`
-- Start Command: `PORT=3001 npm run start`
-- Port/App Port: `3001` (ou outra porta livre)
-- Working Directory: pasta do projeto
+Nesse caso, o start vem do `package.json`:
 
-Garanta que o reverse proxy do CloudPanel aponte para essa porta.
+- `start`: `next start -p 3001`
 
-Observacao importante:
+No CloudPanel, mantenha:
 
-- O `next start` usa a porta `3000` por padrao.
-- Se nao definir `PORT`, ele sempre tentara `3000` e pode gerar `EADDRINUSE`.
-- Alternativa equivalente de start command: `npm run start -- -p 3001`
+- Porta do aplicativo: `3001`
+- Diretorio raiz: pasta correta do projeto
+
+Depois de buildar, reinicie o app no painel.
 
 ## 8) SSL (Let's Encrypt)
 
@@ -173,3 +171,64 @@ Reinicie o app Node no CloudPanel e limpe cache do navegador.
 2. Criar usuario de deploy sem usar `root`.
 3. Configurar backups do banco Supabase.
 4. Habilitar monitoramento de uptime (UptimeRobot/Better Stack).
+
+## 12) Como atualizar o repositorio (local -> GitHub)
+
+No seu computador/local de desenvolvimento:
+
+```bash
+cd /caminho/do/projeto
+git add .
+git commit -m "sua mensagem"
+git push origin main
+```
+
+Se pedir credencial HTTPS, use:
+
+- Username: seu usuario GitHub
+- Password: PAT (token), nao senha da conta
+
+## 13) Como atualizar na VPS
+
+### Cenário A: pasta da VPS eh um clone Git (tem `.git`)
+
+```bash
+cd ~/htdocs/ezequiasalves.kltecnologia.com
+git pull origin main
+npm install
+npm run build
+```
+
+Depois, reinicie o app no CloudPanel.
+
+### Cenário B: pasta da VPS nao eh clone Git
+
+Sintoma:
+
+- `fatal: not a git repository`
+
+Opcoes:
+
+1. Recomendada: migrar para clone Git
+
+```bash
+cd ~/htdocs
+mv ezequiasalves.kltecnologia.com ezequiasalves.kltecnologia.com.bkp
+git clone https://github.com/rayhenrique/vitrineimobiliaria.git ezequiasalves.kltecnologia.com
+cp ezequiasalves.kltecnologia.com.bkp/.env.local ezequiasalves.kltecnologia.com/.env.local
+cd ezequiasalves.kltecnologia.com
+npm install
+npm run build
+```
+
+2. Manter upload manual (sem git pull)
+
+- Enviar arquivos atualizados
+- Rodar:
+
+```bash
+npm install
+npm run build
+```
+
+Em ambos os casos: reiniciar app no CloudPanel.
